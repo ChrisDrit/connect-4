@@ -1,0 +1,21 @@
+<%# -------------------------------------------------------- %>
+<%# TODO very kludgy in here, refactor this!                 %>
+<%# -------------------------------------------------------- %>
+
+<% if @bitboard.try(:continue_game_play?) %>
+
+  displayMove('<%= @player.number %>', '<%= @game_grid %>');
+
+<% elsif @not_my_move %>
+
+  displayNotMyMove();
+
+<% elsif !@bitboard.try(:valid_move) %>
+
+  displayInValidMove('<%= @player.number %>');
+
+<% else %>
+
+  <%# TODO handle this case! %>
+
+<% end %>

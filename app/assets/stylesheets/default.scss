@@ -1,0 +1,28 @@
+// Extra Small devices
+.connect-4-logo {
+  font-size: 6px;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .connect-4-logo {
+    font-size: 10px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .connect-4-logo {
+    font-size: 12px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .connect-4-logo {
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}

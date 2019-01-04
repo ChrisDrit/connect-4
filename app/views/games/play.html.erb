@@ -1,0 +1,49 @@
+<div class="row" id="start-new-game-button" style="display:none;">
+  <div class="col text-center p-3">
+    <%= link_to "Start New Game!", root_path, class: "btn btn-primary btn-md btn-block" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+
+    <% 5.downto(0) do |row| %>
+        <div class="row">
+          <% 0.upto(6) do |col| %>
+              <%= link_to ' ', game_move_path, 'data-params': "id=#{@game.id}&column=#{col}", remote: true, method: :post, class: "col row-#{row}-col-#{col} game-board border text-center" %>
+          <% end %>
+        </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row pt-4 pb-4 text-dark">
+  <div class="col text-center">
+    <p id="current-player">
+      <% if @player.is_player_1? %>It's your move...
+      <% else %>Waiting for Player 1 to move first.
+      <% end %></p>
+    <h1 class="h2">Connect 4</h1>
+    <h2 class="h5">Tap any column to begin playing</h2>
+  </div>
+</div>
+
+<%= content_for(:javascript) do %>
+    <script>
+        var pusher = new Pusher('8fc2bf8750edcb87bd34', {cluster: 'us2', forceTLS: true});
+        var channel = pusher.subscribe('game-<%= @game.id %>');
+        channel.bind('display-move', function (data) {
+            displayMove(data['message']['player'], data['message']['bitboard']);
+        });
+        channel.bind('display-current-player', function (data) {
+            displayCurrentPlayer(<%= @player.number %>, data['message']['player']);
+        });
+        channel.bind('display-win', function (data) {
+            displayWin(<%= @player.number %>, data['message']['player']);
+        });
+        channel.bind('display-draw', function () {
+            displayDraw();
+        });
+    </script>
+<% end %>

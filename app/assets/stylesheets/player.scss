@@ -1,0 +1,33 @@
+// Extra Small devices
+.game-board {
+  padding: 1.0rem;
+  padding-top: 3.5rem;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .game-board {
+    padding: 2.5rem;
+    padding-top: 3.5rem;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .game-board {
+    padding: 2rem;
+    padding-top: 4.5rem;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .game-board {
+    padding: 3rem;
+    padding-top: 3.5rem;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
