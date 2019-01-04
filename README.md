@@ -24,9 +24,9 @@ _by Chris Drit_
 
 ##### Play a game?
 
-* Or... Open 2 seperate browser windows side-by-side.
-* Make sure one is incognito and the other not.
-    1. Otherwise expect Session Collision with all sorts of ugliness.
+* This is responsive! Use your mobile :)
+* Or... Open 2 separate browser windows side-by-side on your desktop.
+* Make sure one is incognito and the other not. Otherwise expect Session Collision with all sorts of ugliness.
 * Surf to `http://localhost:3000/` on both browser windows.
 * If everything went well, you should see this:    
 
