@@ -13,10 +13,11 @@ _by Chris Drit_
 
 ##### To Install + Run:
 
-1. Clone this repo
-1. `bundle install` _(`gem install bundler`)_
+1. Clone this repo.
+1. `bundle install` _(if needed: `gem install bundler`)_
 1. `bundle exec rails db:migrate`
 1. `bundle exec rails s`
+1. You'll need an active internet connection as I rely upon external resources.
 
 ##### Run Tests?
 
