@@ -30,26 +30,26 @@ _by Chris Drit_
 * Surf to `http://localhost:3000/` on both browser windows.
 * If everything went well, you should see this:    
 
-![alt text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/connect-4-screenshot-home.png "Connect 4 Home Page")
+![alt text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/public/connect-4-screenshot-home.png "Connect 4 Home Page")
 
 
 * Tap `start game` in one of the windows:
 
-![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/connect-4-screenshot-waiting-for-player-2.png "Connect 4 Waiting...")
+![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/public/connect-4-screenshot-waiting-for-player-2.png "Connect 4 Waiting...")
 
 * Switch to the second window and tap `start game`.
 * You are now in 2 player mode:
 
-![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/connect-4-screenshot-game-grid.png "Connect 4 Game Grid")
+![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/public/connect-4-screenshot-game-grid.png "Connect 4 Game Grid")
 
 * Tap a column to begin:
 
-![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/connect-4-screenshot-plaing-game.png "Connect 4 Game Play")
+![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/public/connect-4-screenshot-plaing-game.png "Connect 4 Game Play")
 
 
 ##### Can anyone say responsive & mobile first?
 
-![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/connect-4-screenshot-responsive.png "Connect 4 Responsive Game Grid")
+![alt_text](https://raw.githubusercontent.com/ChrisDrit/connect-4/master/public/connect-4-screenshot-responsive.png "Connect 4 Responsive Game Grid")
 
 
 
