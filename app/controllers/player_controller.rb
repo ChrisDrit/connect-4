@@ -7,7 +7,7 @@ class PlayerController < ApplicationController
     player = Player.create(game_board: board, number: player_number, game_id: @game.id)
     session[:player_id] = player.id
     
-    Pusher.trigger('show-game-grid', 'refresh-page', {message: {refresh: true}}) if player.is_player_2?
+    Pusher.trigger('show-game-grid', 'refresh-page', {message: {refresh: true}}) unless player.is_player_1?
     Pusher.trigger('join-game', 'refresh-page', {message: {refresh: true}}) if player.is_player_1?
     redirect_to game_path(@game.id)
   end
