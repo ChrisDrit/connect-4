@@ -133,7 +133,7 @@ class Bitboard
     # via the column passed in. This is our new move represented
     # in a Binary String.
     #
-    # Bitboard
+    # Bitboard Game Grid
     # +---------------------+
     # | 5 12 19 26 33 40 47 |
     # | 4 11 18 25 32 39 46 |
@@ -143,7 +143,7 @@ class Bitboard
     # | 0  7 14 21 28 35 42 |
     # +---------------------+
     #
-    # Examples Shifting positions 7, 0, 21, and 22:
+    # Examples Shifting positions (found in @row[column]) 7, 0, 21, and 22 onto the Game Grid:
     #
     # @single_bit:            0000000000000000000000000000000000000000000000000000000000000001
     # (@single_bit << 7):     0000000000000000000000000000000000000000000000000000000010000000
