@@ -192,8 +192,8 @@ class Bitboard
     #
     # 0 0000000 0000000 0000000 0000000 0000100 0000000 0000000 0000001 0000001
     #                    col 6   col 5   col 4   col 3   col 2   col 1   col 0
-    # 
-    #                         row 6 (extra row)
+    #
+    # Game Grid               row 6 (extra row)
     # +---------------------+
     # |                     | row 5
     # |                     | row 4
@@ -344,9 +344,8 @@ class Bitboard
 
   def list_moves
     #
-    # Return an Array of available positions for a next move.
+    # Return an Array of available columns for a next move.
     #
-    # List the columns that we have with an available move.
     # For example, if all columns are playable
     # the resulting Array of columns looks like:
     #
@@ -362,12 +361,12 @@ class Bitboard
     # this (player 1 = 'X', player 2 = 'O'):
     #
     # +---------------------+
-    # | X                   | top row
+    # | X                   |
     # | X                   |
     # | O                   |
     # | O                   |
     # | X               O   |
-    # | X    O   O      X   | bottom row
+    # | X    O   O      X   | 
     # +---------------------+
     #   0  1  2  3  4  5  6
     #        (columns)
@@ -383,7 +382,7 @@ class Bitboard
     #                                                     ^
     #                               (hint: position 6 from below)
     #
-    # Where did the value for top come from!?
+    # Where did the value for `top` come from!?
     #
     #   6 13 20 27 34 41 48   The Magic Top Row
     # +---------------------+
