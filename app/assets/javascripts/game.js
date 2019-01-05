@@ -87,12 +87,12 @@ var displayNewGameButton = function () {
  * 0 0000000 0000000 0000000 0000000 0000000 0000000 0000000 0010000 0000000
  *     - MSB's -      col 6   col 5   col 4   col 3   col 2   col 1   col 0
  *
- * This Bitboard has 1 position taken on the game grid at row 5, col 1.
+ * This Bitboard has 1 position taken on the game grid at row 4, col 1.
  *
  * How?
  *
- * Column 1 from the Bitboard is "0010000". So we of course know
- * which column we are on. We start our row count from the Least
+ * Column 1 from the Bitboard above is "0010000". So we of course
+ * know which column we are on. We start our row count from the Least
  * Significant Bit (LSB). Least Significant Bit (LSB) to Most
  * Significant Bit (MSB) is read from right to left. To illustrate,
  * Column 1 is displayed vertically (below) with each row defined:
