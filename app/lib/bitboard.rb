@@ -188,6 +188,24 @@ class Bitboard
     #                   ------------------------------------------------------------------
     # new Bitboard:       0000000000000000000000000000000001000000000000000000000010000001
     #
+    # New Bitboard Binary String converted to a Game Grid:
+    #
+    # 0 0000000 0000000 0000000 0000000 0000100 0000000 0000000 0000001 0000001
+    #                    col 6   col 5   col 4   col 3   col 2   col 1   col 0
+    # 
+    #                         row 6 (extra row)
+    # +---------------------+
+    # |                     | row 5
+    # |                     | row 4
+    # |                     | row 3
+    # |             X       | row 2
+    # |                     | row 1
+    # | X  X                | row 0
+    # +---------------------+
+    #   0  1  2  3  4  5  6
+    #        (columns)
+    #
+    # 
     # Bu-Bam!
     #
     @bitboard = sprintf('%064b', (@bitboard.to_i(2) ^ @current_move.to_i(2)))
