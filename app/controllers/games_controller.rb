@@ -16,7 +16,8 @@ class GamesController < ApplicationController
       @bitboard = @player.game.make_move(@player, game_params[:column])
       @game_grid = @player.game_board.build_game_grid(@bitboard)
       @game.check_set_next_player(@player, @bitboard)
-      
+
+      # TODO find a better home for this group of four stray dogs!
       Pusher.trigger("game-#{@player.game.id}", 'display-move', {message: {player: @player.number, bitboard: @game_grid}})
       Pusher.trigger("game-#{@player.game.id}", 'display-current-player', {message: {player: @player.next_player}})
       Pusher.trigger("game-#{@player.game.id}", 'display-win', {message: {player: @player.number}}) if @bitboard.is_win?

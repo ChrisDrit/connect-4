@@ -5,8 +5,7 @@ class Game < ApplicationRecord
   scope :set_running, ->(id) {find(id).update_attributes(waiting: false, running: true)}
   scope :last_waiting, -> {where(waiting: true, running: false).order('created_at DESC').limit(1)}
   
-  # Make a move on the game grid, save state,
-  # and return a Bitboard.
+  # Make a move on the game grid, save state, and return a Bitboard.
   def make_move(player, column)
     bitboard = Bitboard.new(player.game_board.bits, explode(self.positions))
     bitboard.make_move(column)
