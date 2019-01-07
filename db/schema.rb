@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_174240) do
+ActiveRecord::Schema.define(version: 2019_01_04_040245) do
 
   create_table "game_boards", force: :cascade do |t|
     t.string "bits"
