@@ -37,6 +37,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (= 2.0.2)
   rspec
   rspec_junit_formatter
   rubocop (= 0.74)
