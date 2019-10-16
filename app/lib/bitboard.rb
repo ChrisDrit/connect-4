@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # -----------------------------------------------------------------------
 # Bitboard
 #
@@ -64,11 +66,9 @@
 # Sweet! :)
 #
 class Bitboard
-
   attr_reader :bitboard, :current_move, :row, :valid_move
 
   def initialize(bitboard:, row: nil)
-
     # The Bitboard passed in is the current players
     # saved game. This is the players game board in
     # it's current state with all of their moves.
@@ -106,8 +106,7 @@ class Bitboard
     # | 0  7 14 21 28 35 42 | bottom row
     # +---------------------+
     #
-    @row = (row && row.any?) ? row : [0, 7, 14, 21, 28, 35, 42]
-
+    @row = row&.any? ? row : [0, 7, 14, 21, 28, 35, 42]
 
     # We'll need to access the current move just
     # made as a binary string once completed.
@@ -116,11 +115,9 @@ class Bitboard
     # We may have selected a column with
     # all rows filled toggling this to true.
     @valid_move = false
-
   end
 
   def make_move(column:)
-
     # cast
     column = column.to_i
 
@@ -160,7 +157,7 @@ class Bitboard
     # More:
     # => http://ruby-doc.org/core-2.5.0/Kernel.html#method-i-sprintf
     #
-    @current_move = sprintf('%064b', (@single_bit << @row[column]))
+    @current_move = format('%064b', (@single_bit << @row[column]))
 
     # @bitboard
     #
@@ -205,10 +202,10 @@ class Bitboard
     #   0  1  2  3  4  5  6
     #        (columns)
     #
-    # 
+    #
     # Bu-Bam!
     #
-    @bitboard = sprintf('%064b', (@bitboard.to_i(2) ^ @current_move.to_i(2)))
+    @bitboard = format('%064b', (@bitboard.to_i(2) ^ @current_move.to_i(2)))
 
     # Position tracking
     #
@@ -238,30 +235,31 @@ class Bitboard
     # Bitboard Game Grid when column 3 is selected by any player.
     #
     @row[column] += 1
-
   end
 
   # Without passing in arguments can
   # we continue with the game?
   def continue_game_play?
-    !is_win? && @valid_move
+    !win? && @valid_move
   end
 
   # Is the move passed in valid?
   def can_move?(column)
     @valid_move = list_moves.include? column
-    return false if (!@valid_move || is_draw? || is_win?)
+    return false if !@valid_move || draw? || win?
+
     true
   end
 
   # No more moves available and we don't yet
   # have a winner, it's a draw!
-  def is_draw?
-    return true if (list_moves.count <= 0) && !is_win?
+  def draw?
+    return true if (list_moves.count <= 0) && !win?
+
     false
   end
 
-  # is_win?
+  # win?
   #
   # This can be refactored to call less Bitwise operations but
   # leaving it verbose does not have a big speed impact (today),
@@ -305,12 +303,13 @@ class Bitboard
   #
   # Slick...
   #
-  def is_win?
+  def win?
     bitboard = @bitboard.to_i(2)
-    return true if (bitboard & (bitboard >> 6) & (bitboard >> 12) & (bitboard >> 18) != 0) # diagonal \
-    return true if (bitboard & (bitboard >> 8) & (bitboard >> 16) & (bitboard >> 24) != 0) # diagonal /
-    return true if (bitboard & (bitboard >> 7) & (bitboard >> 14) & (bitboard >> 21) != 0) # horizontal -
-    return true if (bitboard & (bitboard >> 1) & (bitboard >> 2) & (bitboard >> 3) != 0) # vertical |
+    return true if bitboard & (bitboard >> 6) & (bitboard >> 12) & (bitboard >> 18) != 0 # diagonal \
+    return true if bitboard & (bitboard >> 8) & (bitboard >> 16) & (bitboard >> 24) != 0 # diagonal /
+    return true if bitboard & (bitboard >> 7) & (bitboard >> 14) & (bitboard >> 21) != 0 # horizontal -
+    return true if bitboard & (bitboard >> 1) & (bitboard >> 2) & (bitboard >> 3) != 0 # vertical |
+
     false
   end
 
@@ -333,9 +332,9 @@ class Bitboard
   #
   def columnize
     columnized = {}
-    bits = self.current_move[15..63]
+    bits = current_move[15..63]
     bits = bits.reverse
-    bits = (bits.scan(/.{7}/))
+    bits = bits.scan(/.{7}/)
     bits.each_with_index do |col, index|
       columnized[index] = col
     end
@@ -415,11 +414,8 @@ class Bitboard
     top = '1000000100000010000001000000100000010000001000000'.to_i(2)
     0.upto(6) do |column|
       new_move = (@single_bit << @row[column])
-      if ((top & new_move) == 0)
-        moves << column
-      end
+      moves << column if (top & new_move).zero?
     end
     moves
-
   end
 end

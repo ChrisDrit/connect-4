@@ -31,10 +31,10 @@ This is that example.
 
 * `bundle exec rspec -f d`
 
-**Pull Requests**
+**[Pull Requests](https://github.com/ChrisDrit/connect-4/pulls)**
 
-* [CircleCI integration](https://github.com/ChrisDrit/connect-4/pulls) 
-  for automated testing (RSpec)
-
+* CircleCI integration for automated testing (RSpec).
   
-
+*  CodeClimate integration for Code Style (Rubocop).
+  
+    ![Pull Request Integrations](./public/pull-request-integrations.png "Pull Request Integrations")
