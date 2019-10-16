@@ -7,7 +7,7 @@ Creating the game engine for connect-4 via
 in Ruby.
 
 The above Bitboards link is to a high level discussion on how
-to use Bitboards via psudo-code. When searching the internets
+to use Bitboards via pseudo-code. When searching the internets
 I didn't find an example written in Ruby. 
 
 This is that example.
@@ -38,6 +38,9 @@ either of those technologies.
 **Run Tests**
 
 * `bundle exec rspec -f d`
+
+  * Currently there is minimal testing. Will 
+    extend to validate game play!
 
 **Run Robocop (linter, etc...)**
 
