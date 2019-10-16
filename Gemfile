@@ -10,4 +10,3 @@ group :development, :test do
   gem 'rspec_junit_formatter' # for CodeClimate
   gem 'rubocop', '= 0.74', require: false
 end
-
