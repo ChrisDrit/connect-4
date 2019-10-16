@@ -342,75 +342,75 @@ class Bitboard
     columnized
   end
 
+  #
+  # Return an Array of available columns for a next move.
+  #
+  # For example, if all columns are playable
+  # the resulting Array of columns looks like:
+  #
+  # list_moves = [0, 1, 2, 3, 4, 5, 6]
+  #
+  # When we've filled all rows for a column, then we have
+  # no more valid moves in this column and it's removed
+  # from the list.
+  #
+  # Example:
+  #
+  # If the game grid with player moves looks like
+  # this (player 1 = 'X', player 2 = 'O'):
+  #
+  # +---------------------+
+  # | X                   |
+  # | X                   |
+  # | O                   |
+  # | O                   |
+  # | X               O   |
+  # | X    O   O      X   |
+  # +---------------------+
+  #   0  1  2  3  4  5  6
+  #        (columns)
+  #
+  # Then there are no more valid moves for column 0.
+  # If we Bitwise AND the `top` variable with our move, it
+  # looks like this:
+  #
+  # top:      1000000100000010000001000000100000010000001000000
+  # move:  &  0000000000000000000000000000000000000000001000000
+  #        -----------------------------------------------------
+  #           0000000000000000000000000000000000000000001000000
+  #                                                     ^
+  #                               (hint: position 6 from below)
+  #
+  # Where did the value for `top` come from!?
+  #
+  #   6 13 20 27 34 41 48   The Magic Top Row
+  # +---------------------+
+  # | 5 12 19 26 33 40 47 |
+  # | 4 11 18 25 32 39 46 |
+  # | 3 10 17 24 31 38 45 |
+  # | 2  9 16 23 30 37 44 |
+  # | 1  8 15 22 29 36 43 |
+  # | 0  7 14 21 28 35 42 |
+  # +---------------------+
+  #   0  1  2  3  4  5  6
+  #        (columns)
+  #
+  # The top row has positions 6,13,20,27,34,41,48 and is the hidden
+  # row outside of the viewable Game Grid. If we've got position 6
+  # filled then we immediately know that column 0 is no longer playable.
+  #
+  # Since the Bitwise AND operation resulted in a 1 for column 0
+  # it is NOT added to the Array of available moves.
+  #
+  # list_moves = [1, 2, 3, 4, 5, 6]
+  #
+  # All of our moves are saved in the `@row` variable. A quick
+  # loop (7 iterations) with a Bitwise Shift and a Bitwise
+  # AND operation gives us what we need :)
+  #
+  # Impressive.
+  #
   def list_moves
-    #
-    # Return an Array of available columns for a next move.
-    #
-    # For example, if all columns are playable
-    # the resulting Array of columns looks like:
-    #
-    # list_moves = [0, 1, 2, 3, 4, 5, 6]
-    #
-    # When we've filled all rows for a column, then we have
-    # no more valid moves in this column and it's removed
-    # from the list.
-    #
-    # Example:
-    #
-    # If the game grid with player moves looks like
-    # this (player 1 = 'X', player 2 = 'O'):
-    #
-    # +---------------------+
-    # | X                   |
-    # | X                   |
-    # | O                   |
-    # | O                   |
-    # | X               O   |
-    # | X    O   O      X   | 
-    # +---------------------+
-    #   0  1  2  3  4  5  6
-    #        (columns)
-    #
-    # Then there are no more valid moves for column 0.
-    # If we Bitwise AND the `top` variable with our move, it
-    # looks like this:
-    #
-    # top:      1000000100000010000001000000100000010000001000000
-    # move:  &  0000000000000000000000000000000000000000001000000
-    #        -----------------------------------------------------
-    #           0000000000000000000000000000000000000000001000000
-    #                                                     ^
-    #                               (hint: position 6 from below)
-    #
-    # Where did the value for `top` come from!?
-    #
-    #   6 13 20 27 34 41 48   The Magic Top Row
-    # +---------------------+
-    # | 5 12 19 26 33 40 47 |
-    # | 4 11 18 25 32 39 46 |
-    # | 3 10 17 24 31 38 45 |
-    # | 2  9 16 23 30 37 44 |
-    # | 1  8 15 22 29 36 43 |
-    # | 0  7 14 21 28 35 42 |
-    # +---------------------+
-    #   0  1  2  3  4  5  6
-    #        (columns)
-    #
-    # The top row has positions 6,13,20,27,34,41,48 and is the hidden
-    # row outside of the viewable Game Grid. If we've got position 6
-    # filled then we immediately know that column 0 is no longer playable.
-    #
-    # Since the Bitwise AND operation resulted in a 1 for column 0
-    # it is NOT added to the Array of available moves.
-    #
-    # list_moves = [1, 2, 3, 4, 5, 6]
-    #
-    # All of our moves are saved in the `@row` variable. A quick
-    # loop (7 iterations) with a Bitwise Shift and a Bitwise
-    # AND operation gives us what we need :)
-    #
-    # Impressive.
-    #
     moves = []
     top = '1000000100000010000001000000100000010000001000000'.to_i(2)
     0.upto(6) do |column|
@@ -422,5 +422,4 @@ class Bitboard
     moves
 
   end
-
 end
