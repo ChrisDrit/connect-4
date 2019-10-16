@@ -67,7 +67,7 @@ class Bitboard
 
   attr_reader :bitboard, :current_move, :row, :valid_move
 
-  def initialize(bitboard, row)
+  def initialize(bitboard:, row: nil)
 
     # The Bitboard passed in is the current players
     # saved game. This is the players game board in
@@ -119,7 +119,7 @@ class Bitboard
 
   end
 
-  def make_move(column)
+  def make_move(column:)
 
     # cast
     column = column.to_i
