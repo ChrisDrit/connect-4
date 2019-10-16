@@ -12,10 +12,18 @@ I didn't find an example written in Ruby.
 
 This is that example.
 
+### Next Steps
+
+I'd like to use this code as the backend to an actual connect-4
+game created with a front-end in something like [Vue.js](https://vuejs.org/) 
+or [React](https://reactjs.org/) as an exercise to become more familiar with 
+either of those technologies.
+
 ### Stack
 
 * Ruby 2.6.3
-* RSpec for testing
+* RSpec (testing)
+* Rubocop (linter)
 
 ### Getting Started
 
@@ -30,6 +38,10 @@ This is that example.
 **Run Tests**
 
 * `bundle exec rspec -f d`
+
+**Run Robocop (linter, etc...)**
+
+* `bundle exec rubocop`
 
 **[Pull Requests](https://github.com/ChrisDrit/connect-4/pulls)**
 
